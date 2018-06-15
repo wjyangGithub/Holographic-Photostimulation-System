@@ -1,4 +1,6 @@
 // This is to be run after correction file is made for each individual photostimulation session [run after Matlab file "photostimulationArtifactRemover.m"] 
+// Author: Weijian Yang, 2015-2018
+
 // frames when each photostimulation starts, same as "onset" in the Matlab program
 onset=newArray(200, 400, 600, 800);
 // frames when each photostimulation ends, same as "endset" in the Matlab program
