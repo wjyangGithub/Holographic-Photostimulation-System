@@ -1,0 +1,35 @@
+// This is to be run after correction file is made for each individual photostimulation session [run after Matlab file "photostimulationArtifactRemover.m"] 
+// frames when each photostimulation starts, same as "onset" in the Matlab program
+onset=newArray(200, 400, 600, 800);
+// frames when each photostimulation ends, same as "endset" in the Matlab program
+endset=newArray(205, 405, 605, 805);
+// total photostimulation sessions
+photoStimSessionNum=4;
+// recorded movie (for a specific plane) with photostimulation artifact, same as "fileName" in Matlab program
+originalFile="E:\\Data\\recordingWithStimArtifact.tif";
+// name of the new files saved by Matlab, which store the corrected file for each individual photostimulation session, same as "saveFileName" in Matlab program 
+newFile="E:\\Data\\correctedRecording";
+// same as the file name of "originalFile", but without pathname
+image0="recordingWithStimArtifact.tif";
+// same as the file name of "newFile", but without pathname
+image2="correctedRecording";
+
+open(originalFile);
+
+// cycle through each photostimulation
+for (idx=0; idx<photoStimSessionNum; idx++)
+ {
+	comm="delete slices=" +  toString(1) + "-" + toString(onset[idx]-1);
+	run("Make Substack...", comm);
+	image1="Substack (" + toString(1) + "-" + toString(onset[idx]-1) + ")";
+
+	selectWindow(image0);
+	comm="delete slices=" +  toString(1) + "-" + toString(endset[idx]-onset[idx]+1);
+	run("Make Substack...", comm);
+	close();
+
+	selectWindow(image0);
+	open(newFile + toString(idx+1) + ".tif");
+	image21=image2 + toString(idx+1) + ".tif";
+	run("Concatenate...", "  title=" + image0 + " image1=[" + image1 + "] image2=" + image21 + " image3=" + image0 + " image4=[-- None --]");
+}
