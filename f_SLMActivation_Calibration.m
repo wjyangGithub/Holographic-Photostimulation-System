@@ -1,7 +1,7 @@
 % Wrapper to calculate SLM hologram given the target points, and load to SLM 
 % Author: Weijian Yang, 2015-2018
 
-% to use this, uncomment line 30, and 36
+% to use this, uncomment line 32, and 36
 
 function [ correctedPhase ] = f_SLMActivation_Calibration( SLM_handles, xyzp, weight, objectiveNA )
 %SLM Summary of this function goes here
