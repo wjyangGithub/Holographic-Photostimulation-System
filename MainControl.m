@@ -1,5 +1,5 @@
 % Main control of the photostimulation system
-% This software can perform cooridinate calibration, selecting target
+% This software can perform coordinate calibration, selecting target
 % points in 3D, load and switch holographic phase pattern on SLM, etc.
 % Author: Weijian Yang, 2015-2018
 
